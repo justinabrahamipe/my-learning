@@ -10,19 +10,19 @@ pipeline {
 
         stage('Stop old containers') {
             steps {
-                sh 'docker-compose down || true'
+                sh 'docker compose down || true'
             }
         }
 
         stage('Build and deploy') {
             steps {
-                sh 'docker-compose up -d --build'
+                sh 'docker compose up -d --build'
             }
         }
 
         stage('Verify running') {
             steps {
-                sh 'docker-compose ps'
+                sh 'docker compose ps'
             }
         }
     }
